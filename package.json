@@ -1,0 +1,32 @@
+{
+  "name": "aether",
+  "version": "0.0.1",
+  "description": "A General Multipurpose Discord Bot Made For Fun And Maybe Committing Crimes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node src/tests/test.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/King-Noob-Show/Aether.git"
+  },
+  "keywords": [
+    "Fun",
+    "Moderation",
+    "General",
+    "Random",
+    "Discord"
+  ],
+  "author": "KingNoobShow",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/King-Noob-Show/Aether/issues"
+  },
+  "homepage": "https://github.com/King-Noob-Show/Aether#readme",
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "ansi-colors": "^4.1.3",
+    "discord.js": "^14.18.0"
+  }
+}
