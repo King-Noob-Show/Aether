@@ -132,3 +132,5 @@ dist
 .idea
 .prettierignore
 src/tests
+.vscode
+!/src/errors/errors.txt
