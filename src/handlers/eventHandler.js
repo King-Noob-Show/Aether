@@ -16,7 +16,7 @@ module.exports = (client) => {
 
     for (const file of events) {
       const event = require(`../events/${file}`);
-      console.log("Event Loaded, ", event);
+      // console.log("Event Loaded, ", event);
       if (event.once) {
         client.once(event.name, (...args) => event.execute(...args));
       } else {

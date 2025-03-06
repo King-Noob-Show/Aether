@@ -1,5 +1,10 @@
 // Imports
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const {
+  Client,
+  GatewayIntentBits,
+  Collection,
+  Partials,
+} = require("discord.js");
 const c = require("ansi-colors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -14,12 +19,14 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.MessageContent,
   ],
-  allowedMentions: {
-    parse: ["everyone", "roles", "users"],
-    repliedUser: true,
-    users: true,
-    roles: true,
-  },
+  partials: [
+    Partials.Channel,
+    Partials.Message,
+    Partials.User,
+    Partials.GuildMember,
+    Partials.ThreadMember,
+    Partials.Reaction,
+  ],
 });
 
 // Collections

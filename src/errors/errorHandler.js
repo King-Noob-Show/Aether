@@ -17,7 +17,7 @@ function errorHandler() {
       "[ERROR] Unknown Error";
     const logEntry = `[${new Date().toISOString()}] [${type}] ${errorMessage}\n\n`;
 
-    fs.appendFileSync("errors.txt", logEntry);
+    fs.appendFileSync(logFilePath, logEntry);
   }
 
   // Error Handlers
@@ -35,7 +35,7 @@ function errorHandler() {
 
   process.on("uncaughtExceptionMonitor", (err, origin) => {
     console.log(c.red.bold(" [ERROR] Uncaught Exception/Catch (MONITOR)"));
-    // console.log(c.red.bold(err), origin);
+    console.log(c.red.bold(err), origin);
     logErrorToFile("Uncaught Exception Monitor", err);
   });
 
