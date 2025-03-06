@@ -4,6 +4,7 @@ const c = require("ansi-colors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const errorHandler = require("./errors/errorHandler");
+const fs = require("fs");
 dotenv.config();
 
 // Creating A New Client
@@ -20,6 +21,14 @@ const client = new Client({
     roles: true,
   },
 });
+
+// Collections
+client.scommands = new Collection();
+client.mcommands = new Collection();
+client.events = new Collection();
+client.cooldowns = new Collection();
+client.scategories = fs.readdirSync("./src/commands/scommands/");
+client.mcategories = fs.readdirSync("./src/commands/mcommands/");
 
 // Exporting Client
 module.exports = client;

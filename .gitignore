@@ -133,4 +133,4 @@ dist
 .prettierignore
 src/tests
 .vscode
-!/src/errors/errors.txt
+src/errors/errors.txt
