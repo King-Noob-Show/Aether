@@ -1,5 +1,4 @@
 const { Client, Events, REST, Routes } = require("discord.js");
-const { SCommand } = require("../classes/scommand");
 const fs = require("fs");
 const dotenv = require("dotenv");
 const c = require("ansi-colors");

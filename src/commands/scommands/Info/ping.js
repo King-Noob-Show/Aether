@@ -1,6 +1,4 @@
-const { EmbedBuilder, ChatInputCommandInteraction } = require("discord.js");
-const emb = require("../../../configs/embed.json");
-const { SCommand } = require("../../../classes/scommand.js");
+const { SCommand } = require("../../../structs/scommand.js");
 
 module.exports = new SCommand({
   name: "ping",

@@ -1,10 +1,6 @@
 // Imports
-const {
-  Client,
-  GatewayIntentBits,
-  Collection,
-  Partials,
-} = require("discord.js");
+const { Client, Collection, Partials } = require("discord.js");
+const intents = require("./structs/intents");
 const c = require("ansi-colors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
@@ -15,18 +11,26 @@ dotenv.config();
 // Creating A New Client
 const client = new Client({
   intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.MessageContent,
+    intents.Guilds,
+    intents.GuildMembers,
+    intents.GuildMessages,
+    intents.GuildVoiceStates,
+    intents.DirectMessages,
+    intents.MessageContent,
+    intents.GuildModeration,
   ],
   partials: [
-    Partials.Channel,
     Partials.Message,
+    Partials.Reaction,
+    Partials.Channel,
     Partials.User,
     Partials.GuildMember,
     Partials.ThreadMember,
-    Partials.Reaction,
   ],
+  allowedMentions: {
+    parse: ["users", "roles"],
+    repliedUser: true,
+  },
 });
 
 // Collections

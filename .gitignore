@@ -134,3 +134,4 @@ dist
 src/tests
 .vscode
 src/errors/errors.txt
+errors.txt
