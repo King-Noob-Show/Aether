@@ -6,7 +6,7 @@ module.exports = new MCommand({
   description: "Shows The API And Latency Ping For The Bot.",
   aliases: ["p"],
   category: "Info",
-  usage: "p",
+  usage: ">>ping",
 
   /**
    * @param {Client} client
@@ -16,7 +16,7 @@ module.exports = new MCommand({
    */
   run: async (client, message, args) => {
     try {
-      const msg = `Latency Is ${Date.now() - message.createdTimestamp}ms And API Latency Is ${Math.round(client.ws.ping)}`;
+      const msg = `Latency Is ${Date.now() - message.createdTimestamp}ms And API Latency Is ${Math.round(client.ws.ping)}ms`;
 
       await message.channel.send(msg);
     } catch (e) {

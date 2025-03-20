@@ -1,5 +1,6 @@
 const { Events, ChatInputCommandInteraction } = require("discord.js");
 const client = require("../index.js");
+const c = require("ansi-colors");
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -13,7 +14,7 @@ module.exports = {
 
         const cmd = client.scommands.get(interaction.commandName);
         if (!cmd) {
-          return await interaction.followUp("[ERROR] Slash command not found!");
+          return await interaction.followUp("Slash command not found!");
         }
 
         const args = [];
@@ -27,11 +28,15 @@ module.exports = {
         }
 
         interaction.member =
-          interaction.guild.members.cache.get(interaction.user.id) ||
-          interaction.user.id;
+          interaction.member ||
+          interaction.guild?.members.cache.get(interaction.user.id) ||
+          interaction.user;
 
         // Check Perms
-        if (!interaction.member.permissions.has(cmd.permissions || [])) {
+        if (
+          interaction.guild &&
+          !interaction.member.permissions.has(cmd.permissions || [])
+        ) {
           return interaction.followUp({
             content: `You do not have the required permissions: ${cmd.permissions.join(", ")}`,
             ephemeral: true,
@@ -48,7 +53,8 @@ module.exports = {
         if (cmd) await cmd.run(client, interaction);
       }
     } catch (err) {
-      console.error("Error in interactionCreate event:", err);
+      console.log(c.red.bold("[ERROR] Error in interactionCreate event:-"));
+      console.error(err);
     }
   },
 };

@@ -13,6 +13,7 @@ module.exports = (client) => {
     const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
     let command = 0;
     const arrayOfCommands = [];
+    let count = 0;
 
     fs.readdirSync("./src/commands/scommands").forEach((cmd) => {
       let commands = fs
@@ -26,6 +27,7 @@ module.exports = (client) => {
           client.scommands.set(pull.name, pull);
           arrayOfCommands.push(pull.toJSON());
           command++;
+          count++;
         } else {
           console.log(c.red.bold(`${cmds} command is not ready. Skipping...`));
           continue;
@@ -41,7 +43,9 @@ module.exports = (client) => {
           })
           .then(() => {
             console.log(
-              c.yellow.bold("[COMMANDS] Initialized Interaction Commands."),
+              c.yellow.bold(
+                `[COMMANDS] Initialized ${count} Interaction Commands.`,
+              ),
             );
           });
       });

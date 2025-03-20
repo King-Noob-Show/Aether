@@ -9,7 +9,7 @@ module.exports = new SCommand({
 
   run: async (client, interaction, args) => {
     try {
-      const msg = `Latency Is ${Date.now() - interaction.createdTimestamp}ms And API Latency Is ${Math.round(client.ws.ping)}`;
+      const msg = `Latency Is ${Date.now() - interaction.createdTimestamp}ms And API Latency Is ${Math.round(client.ws.ping)}ms`;
 
       await interaction.followUp({
         content: msg,
